@@ -1,7 +1,7 @@
 @php
     $school_name = 'Lembaga Pendidikan dan Dakwah Jati Sanan';
     $short_name = 'LPD Jati Sanan';
-    $tagline = "Membangun Generasi Qur'ani, Cerdas, dan Berkarakter";
+    $tagline = "Membangun Generasi Cerdas, dan Berkarakter";
 
     $address = 'Jl. KH Shodiq Damanhuri No. 2, RT. 002 RW. 002, Lingkungan Jati, Kelurahan Kamulan, Kecamatan Talun, Kabupaten Blitar, Kode Pos 66183';
 
@@ -13,7 +13,7 @@
         [
             'number' => '01',
             'short' => 'Pondok Pesantren',
-            'desc' => "Mencetak generasi Qur'ani yang berakhlak mulia, mandiri, dan berwawasan global melalui pendidikan pesantren berlandaskan nilai Islam rahmatan lil 'alamin.",
+            'desc' => "Mencetak Generasi yang berakhlak mulia, mandiri, dan berwawasan global melalui pendidikan pesantren berlandaskan nilai Islam rahmatan lil 'alamin.",
             'url' => null,
             'logo' => 'https://lh3.googleusercontent.com/d/1AT7mQVHRwDln28AED21vr6E16fHdHYzV',
             'category' => 'PENDIDIKAN KEAGAMAAN',
@@ -1971,7 +1971,7 @@
                     <div class="about-highlight-mark" aria-hidden="true">"</div>
 
                     <p>
-                        Membangun generasi Qur'ani, cerdas, dan berkarakter.
+                        Membangun Generasi cerdas, dan berkarakter.
                     </p>
                 </div>
             </div>
@@ -2180,7 +2180,7 @@
             <div class="footer-bottom">
                 <p>
                     &copy; {{ date('Y') }} <strong>{{ $short_name }}</strong>.
-                    Hak cipta dilindungi.
+                    Hak cipta dilindungi (tim pengembang : m.f.muzaki.77@gmail.com).
                 </p>
 
                 <p>

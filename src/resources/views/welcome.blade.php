@@ -295,20 +295,18 @@
             flex: 0 0 auto;
             display: grid;
             place-items: center;
-            border: 1.5px solid var(--gold);
-            border-radius: 50%;
-            background: rgba(201, 168, 90, .12);
-            color: #e3c878;
-            font-family: 'Playfair Display', serif;
-            font-size: 14px;
-            font-weight: 700;
-            transition: transform .3s, box-shadow .3s, background .3s;
+            transition: transform .3s;
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         .brand:hover .brand-mark {
-            transform: scale(1.05);
-            background: rgba(201, 168, 90, .2);
-            box-shadow: 0 0 0 4px rgba(201, 168, 90, .12);
+            transform: scale(1.08);
         }
 
         .brand-name {
@@ -1245,11 +1243,6 @@
             gap: 13px;
         }
 
-        .footer-brand .brand-mark {
-            border-color: #c9a85a;
-            background: rgba(201, 168, 90, .12);
-        }
-
         .footer-brand .brand-name {
             color: #fff;
         }
@@ -1370,7 +1363,6 @@
             .brand-mark {
                 width: 36px;
                 height: 36px;
-                font-size: 12px;
             }
 
             .brand-name {
@@ -1704,7 +1696,14 @@
         <div class="wrap nav-inner">
 
             <a href="/" class="brand" aria-label="Beranda LPD Jati Sanan">
-                <div class="brand-mark">JS</div>
+                <div class="brand-mark">
+                    <img
+                        src="https://lh3.googleusercontent.com/d/1AT7mQVHRwDln28AED21vr6E16fHdHYzV"
+                        alt="Logo LPD Jati Sanan"
+                        loading="eager"
+                        referrerpolicy="no-referrer"
+                    >
+                </div>
                 <div>
                     <div class="brand-name">{{ $short_name }}</div>
                     <div class="brand-caption">Pendidikan &amp; Dakwah · Kamulan</div>
@@ -2138,8 +2137,14 @@
 
                 <div>
                     <a href="/" class="footer-brand">
-                        <div class="brand-mark">JS</div>
-
+                        <div class="brand-mark">
+                            <img
+                                src="https://lh3.googleusercontent.com/d/1AT7mQVHRwDln28AED21vr6E16fHdHYzV"
+                                alt="Logo LPD Jati Sanan"
+                                loading="lazy"
+                                referrerpolicy="no-referrer"
+                            >
+                        </div>
                         <div>
                             <div class="brand-name">{{ $short_name }}</div>
                             <div class="brand-caption">
@@ -2240,14 +2245,18 @@
 
     {{-- FALLBACK LOGO UNIT (jika gambar Drive gagal load) --}}
     <script>
-        document.querySelectorAll('.unit-icon img').forEach(img => {
+        document.querySelectorAll('.brand-mark img').forEach(img => {
             img.addEventListener('error', () => {
                 const parent = img.parentElement;
                 img.remove();
+                parent.style.color = '#e3c878';
                 parent.style.fontFamily = "'Playfair Display', serif";
-                parent.style.fontSize = '24px';
-                parent.style.color = 'var(--green)';
-                parent.textContent = '✦';
+                parent.style.fontSize = '14px';
+                parent.style.fontWeight = '700';
+                parent.style.border = '1.5px solid var(--gold)';
+                parent.style.borderRadius = '50%';
+                parent.style.background = 'rgba(201, 168, 90, .12)';
+                parent.textContent = 'JS';
             });
         });
     </script>

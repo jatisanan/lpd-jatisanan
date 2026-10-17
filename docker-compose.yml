@@ -1,0 +1,61 @@
+services:
+    php:
+        container_name: lpd-jatisanan-php
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./src:/var/www/html
+        working_dir: /var/www/html
+        restart: unless-stopped
+        networks:
+            - lpd-network
+        environment:
+            - APP_ENV=local
+            - APP_DEBUG=true
+        deploy:
+            resources:
+                limits:
+                    memory: 256M
+                    cpus: '0.5'
+                reservations:
+                    memory: 128M
+                    cpus: '0.25'
+
+    nginx:
+        container_name: lpd-jatisanan-nginx
+        image: nginx:alpine
+        depends_on:
+            - php
+        volumes:
+            - ./src:/var/www/html
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "8086:80"
+        restart: unless-stopped
+        networks:
+            - lpd-network
+        deploy:
+            resources:
+                limits:
+                    memory: 128M
+                    cpus: '0.25'
+                reservations:
+                    memory: 64M
+                    cpus: '0.1'
+
+networks:
+    lpd-network:
+        driver: bridge
+
+x-casaos:
+    author: self
+    category: Education
+    icon: https://laravel.com/img/favicon/favicon-32x32.png
+    index: /
+    port_map: "8086"
+    scheme: http
+    title:
+        custom: LPD Jatisanan
+    description:
+        custom: Aplikasi Laporan Pendidikan Jatisanan

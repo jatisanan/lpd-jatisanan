@@ -55,19 +55,19 @@
             'number' => '01',
             'title' => 'Pendidikan',
             'desc' => 'Mengintegrasikan ilmu agama dan pengetahuan umum untuk membangun wawasan yang luas.',
-            'icon' => '✳',
+            'icon' => '📖',
         ],
         [
             'number' => '02',
             'title' => 'Dakwah',
             'desc' => "Menanamkan nilai Islam yang membawa rahmat, kedamaian, dan manfaat bagi sesama.",
-            'icon' => '۞',
+            'icon' => '🕌',
         ],
         [
             'number' => '03',
             'title' => 'Karakter',
             'desc' => 'Membiasakan akhlak mulia, kemandirian, kedisiplinan, dan tanggung jawab.',
-            'icon' => '✦',
+            'icon' => '💎',
         ],
     ];
 @endphp
@@ -636,9 +636,12 @@
 
         .stat-number {
             color: var(--green);
-            font-family: 'Playfair Display', serif;
-            font-size: 38px;
+            /* Menghapus font-family Playfair khusus untuk emoji */
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+            font-size: 38px; /* Ukuran emoji tetap besar */
             line-height: 1;
+            min-width: 55px; /* Menjaga jarak agar teks di kanan tetap rata */
+            text-align: center;
             transition: transform .35s;
         }
 
@@ -1004,15 +1007,23 @@
         }
 
         .value-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             margin-top: 24px;
-            color: var(--green);
-            font-family: 'Playfair Display', serif;
-            font-size: 31px;
+            margin-bottom: 4px;
+            width: 54px;
+            height: 54px;
+            background: var(--surface-green); /* Memberi latar belakang kotak halus (opsional, bisa dihilangkan) */
+            border-radius: 14px; /* Membuat sudutnya membulat */
+            font-size: 34px; /* Ukuran emoji dibuat lebih besar */
+            line-height: 1;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; /* Font khusus emoji */
             transition: transform .35s;
         }
 
         .value-card:hover .value-icon {
-            transform: scale(1.15) rotate(-6deg);
+            transform: scale(1.1) rotate(-6deg);
         }
 
         .value-card h3 {
@@ -1049,12 +1060,15 @@
             background: var(--green-deep);
             color: #fff;
             border-radius: 20px;
-            transition: transform .4s, box-shadow .4s;
+            cursor: pointer;
+            transition: transform .4s, border-color .4s;
+            border: 1px solid transparent;
         }
 
         .spmb-panel:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(16, 55, 41, .25);
+            border-color: var(--gold);
+            box-shadow: none; /* shadow dihilangkan */
         }
 
         .spmb-panel::before {
@@ -1802,7 +1816,7 @@
         <div class="wrap stats-grid">
 
             <div class="stat">
-                <div class="stat-number">04</div>
+                <div class="stat-number">🏛️</div>
                 <div>
                     <div class="stat-label">Unit Pendidikan</div>
                     <div class="stat-caption">Satu ekosistem pembelajaran</div>
@@ -1810,7 +1824,7 @@
             </div>
 
             <div class="stat">
-                <div class="stat-number">01</div>
+                <div class="stat-number">⭐</div>
                 <div>
                     <div class="stat-label">Visi Bersama</div>
                     <div class="stat-caption">Ilmu, iman, dan karakter</div>
@@ -1818,7 +1832,7 @@
             </div>
 
             <div class="stat">
-                <div class="stat-number">∞</div>
+                <div class="stat-number">🤲</div>
                 <div>
                     <div class="stat-label">Semangat Pengabdian</div>
                     <div class="stat-caption">Bertumbuh dan memberi manfaat</div>
@@ -1931,6 +1945,43 @@
         </div>
     </main>
 
+    {{-- SPMB --}}
+    <section id="spmb" class="spmb-section">
+        <div class="wrap">
+            <a
+                href="{{ $spmb['url'] }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="spmb-panel"
+                aria-label="Buka portal {{ $spmb['name'] }} di tab baru"
+            >
+                <div class="spmb-copy">
+                    <div class="spmb-kicker">
+                        Penerimaan Murid Baru
+                    </div>
+
+                    <h2>
+                        Awali Langkah Baik dari Lingkungan Pendidikan yang Tepat.
+                    </h2>
+
+                    <p>{{ $spmb['desc'] }}</p>
+                </div>
+
+                <div class="spmb-action">
+                    <span class="btn btn-gold">
+                        {{ $spmb['name'] }}
+                        <span aria-hidden="true">↗</span>
+                    </span>
+
+                    <small>
+                        Kunjungi portal resmi untuk informasi
+                        dan proses pendaftaran.
+                    </small>
+                </div>
+            </a>
+        </div>
+    </section>
+
     {{-- ABOUT --}}
     <section id="tentang" class="about-section">
         <div class="wrap about-grid">
@@ -2015,44 +2066,6 @@
                 @endforeach
             </div>
 
-        </div>
-    </section>
-
-    {{-- SPMB --}}
-    <section id="spmb" class="spmb-section">
-        <div class="wrap">
-            <div class="spmb-panel">
-
-                <div class="spmb-copy">
-                    <div class="spmb-kicker">
-                        Penerimaan Murid Baru
-                    </div>
-
-                    <h2>
-                        Awali Langkah Baik dari Lingkungan Pendidikan yang Tepat.
-                    </h2>
-
-                    <p>{{ $spmb['desc'] }}</p>
-                </div>
-
-                <div class="spmb-action">
-                    <a
-                        href="{{ $spmb['url'] }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-gold"
-                    >
-                        {{ $spmb['name'] }}
-                        <span aria-hidden="true">↗</span>
-                    </a>
-
-                    <small>
-                        Kunjungi portal resmi untuk informasi
-                        dan proses pendaftaran.
-                    </small>
-                </div>
-
-            </div>
         </div>
     </section>
 
